@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code Nerd Font Mono:pixelsize=24:antialias=true:autohint=true";
+static char *font = "SourceCodePro-Black:pixelsize=24:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -210,8 +210,8 @@ static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NUL
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ Mod1Mask|ControlMask, XK_l,           externalpipe,   {.v = openurlcmd } },
-	{ Mod1Mask,             XK_y,           externalpipe,   {.v = copyurlcmd } },
-	{ Mod1Mask,             XK_c,           externalpipe,   {.v = copyoutput } },
+	{ Mod1Mask|ControlMask, XK_y,           externalpipe,   {.v = copyurlcmd } },
+	{ Mod1Mask|ControlMask, XK_c,           externalpipe,   {.v = copyoutput } },
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
@@ -224,8 +224,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_k,           kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_i,           kscrollup,      {.i =  1} },
+	{ MODKEY|ShiftMask,     XK_i,           kscrollup,      {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_k,           kscrolldown,    {.i = -1} },
 };
 
 /*
